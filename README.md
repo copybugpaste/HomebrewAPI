@@ -1,9 +1,7 @@
-# HomebrewAPI
-The official API documentation for Homebrew Vehicle Sandbox 
-
-
 # Foreword 
 This documentation is a huge work in progress, and we'll be updating this farely often. 
+
+If you have any questions, joins us on [DISCORD](https://discord.gg/repVGu5), where he have a special channel specifically for Lua Modding. 
 
 # Basics
 Before you start implementing your own gadget, take your time to view some of the examples already in-game, as they're a great starting point for gadgets. 
@@ -12,7 +10,7 @@ You'll notice that the lua scripts in Homebrew look a little bit different then 
 most importantly, they all follow very strict coding rules. [See Examples](Examples/Flashlight.lua)
 
 # New Gadget Tutorial
-## Foreword
+## Introduction
 In this quick little tutorial, we'll make a flashlight, which you can toggle on and off, as a gadget.
 
 Start by opening up your Lua location (``c:/users/[your-username]/appdata/locallow/CopyBugPaste/Homebrew14/Lua/GadgetLua``)
@@ -30,7 +28,8 @@ Flashlight.info
 Flashlight.png
 ```
 And that's enough to have a 100% working gadget.
-## The Code
+
+## Coding Time
 Next we'll insert the basic mechanics into our flashlight tool. 
 Open up the Flashlight.lua file, and start by creating the functions we'll need
 
@@ -92,15 +91,16 @@ This makes sure that when we switch our gadgets, the light object gets killed as
 
 **Remember to always clean up your objects!** 
 
-So now you've got a light! But, it's a point light! That's not what we want, we want a spotlight. 
+So now you've got a light! But, it's a point light! That's not what we want, we want a spotlight. Since we can't just chug in variable names and expect them to work, it's always a good idea to check the Unity Documentation about the [Component](https://docs.unity3d.com/ScriptReference/Light.html) we added. 
+They always have all the public variables, and functions we'll might need. 
 
-This is quite easy to correct, we just need to set some variables on the light component!
+So let's change some values on our light component!
 
 ```lua
-  self.light.type = LightType.Spot --Defaults to Point light so, change to spot
-  self.light.range = 500 -- up the range a fair bit
-  self.light.intensity = 1.5 -- up the intensity a bit
-  self.light.spotAngle = 55 -- set the angle to a neat 55° 
+  self.light.type = LightType.Spot  --Defaults to Point light so, change to spot
+  self.light.range = 500            -- up the range a fair bit
+  self.light.intensity = 1.5        -- up the intensity a bit
+  self.light.spotAngle = 55         -- set the angle to a neat 55° 
 ```
 We can just chuck those values in Start, right after we create the light. 
 
@@ -117,3 +117,10 @@ end
 
 And that's it! You can always customize the code a lot further (like changing the colors, range, if it displays shadows or not, etc)
 
+Now we can open up Flashlight.info, and insert the information about our gadget
+
+Something like 
+```
+Press your Gadget key to Toggle the flashlight!
+```
+should be sufficient enough for now. 
