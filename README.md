@@ -9,7 +9,7 @@ This documentation is a huge work in progress, and we'll be updating this farely
 Before you start implementing your own gadget, take your time to view some of the examples already in-game, as they're a great starting point for gadgets. 
 You'll notice that the lua scripts in Homebrew look a little bit different then regular lua scripts, 
 
-most importantly, they all follow very strict coding rules. [See Examples](Examples/Binocular.lua)
+most importantly, they all follow very strict coding rules. [See Examples](Examples/Flashlight.lua)
 
 # New Gadget Tutorial
 ## Foreword
