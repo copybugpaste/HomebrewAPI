@@ -32,24 +32,24 @@ function Binocular:Awake()
 
   self.superSize = 1.5
   self:GetPP()
+  HBU.EnableGadgetMouseScroll()
 end
 function Binocular:GetPP()
   self.pp = Camera.main:GetComponent("PostProcessingBehaviour")
 end
 function Binocular:OnDestroy()
   --destroy ui
+  self:TurnOff()
   if( Slua.IsNull(self.cameraUI) == false ) then
     GameObject.Destroy(self.cameraUI)
   end
   --reset camera fov
-  if( self.watching ) then
-    Camera.main.fieldOfView = self.defaultFoV
-  end
 end
 function Binocular:TurnOff()
   self.watching = false
   self.canvasGroup.alpha = 0
   Camera.main.fieldOfView = self.defaultFoV
+  HBU.EnableGadgetMouseScroll()
 end
 
 function Binocular:Update()
@@ -62,6 +62,7 @@ function Binocular:Update()
     if( self.useGadgetSecondaryKey.GetKeyDown() ) then
       self.canvasGroup.alpha = 1
       self.watching = true
+      HBU.DisableGadgetMouseScroll()
     end
   else
     if(self.useGadgetKey:GetKeyDown())then
