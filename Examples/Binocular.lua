@@ -1,14 +1,20 @@
+local Binocular={}
+function main(gameObject)
+  Binocular.gameObject = gameObject
+  return Binocular
+end
+
 function Binocular:Awake()
   self.defaultFoV = HBU.GetSetting("FieldOfView")
   self.useGadgetKey = HBU.GetKey("UseGadget")
   self.useGadgetSecondaryKey = HBU.GetKey("UseGadgetSecondary")
   self.zoomInKey = HBU.GetKey("ZoomIn")
   self.zoomOutKey = HBU.GetKey("ZoomOut")
-  
+
   --load camera ui from resources ( could create from scratch , got posebility to load ur own images, but eh need a fast solution atm)
   local prefab = Resources.Load("5HomebrewGadgets/CameraUI")
   self.cameraUI = GameObject.Instantiate(prefab)
-  
+
   --gather parts of the prefab
   self.distanceText = self.cameraUI.transform:Find("Top/DistanceText"):GetComponent("Text")
   self.timeText = self.cameraUI.transform:Find("Top/TimeText"):GetComponent("Text")
@@ -18,21 +24,22 @@ function Binocular:Awake()
   self.rectableTransform = self.cameraUI.transform:Find("Rectacle")
   self.leftLineOriginalLocalPosition = self.leftLineTransform.localPosition
   self.rightLineOriginalLocalPosition = self.rightLineTransform.localPosition
-  
+
   self.tod = UnityEngine.Object.FindObjectOfType("TOD_Sky")
 
   --make UI invisible at start
   self.canvasGroup.alpha = 0
-  
+
   --setup some vars
   self.watching = false
   self.curFieldOfView = self.defaultFoV
   self.zoomSpeed = 0.1
   self.lastScrollTime = 0.0
 
-  self.superSize = 1.5
+  self.superSize = 1 --set this higher for _ultra highres_ screenshots!
   self:GetPP()
-  HBU.EnableGadgetMouseScroll()
+  self.takingPicture = false
+
 end
 function Binocular:GetPP()
   self.pp = Camera.main:GetComponent("PostProcessingBehaviour")
@@ -43,7 +50,6 @@ function Binocular:OnDestroy()
   if( Slua.IsNull(self.cameraUI) == false ) then
     GameObject.Destroy(self.cameraUI)
   end
-  --reset camera fov
 end
 function Binocular:TurnOff()
   self.watching = false
@@ -53,7 +59,8 @@ function Binocular:TurnOff()
 end
 
 function Binocular:Update()
-  if( HBU.MayControle() == false or HBU.InSeat()  or HBU.InBuilder()) then 
+  if self.takingPicture == true then return end
+  if( HBU.MayControle() == false or HBU.InSeat()  or HBU.InBuilder()) then
       self:TurnOff()
     return
   end
@@ -66,34 +73,28 @@ function Binocular:Update()
     end
   else
     if(self.useGadgetKey:GetKeyDown())then
+      self.takingPicture = true
       --Take screenshot
-      local c = coroutine.create(function()
-          -- Hide the camera util, the rest of the UI, and disable AA to stop ugly banding from happening.
-          local aa_enabled = self.pp.profile.antialiasing.enabled
-          self.pp.profile.antialiasing.enabled = false
-          self.canvasGroup.alpha = 0
-          local mm = GameObject.Find("MainMenu")
-          mm:SetActive(false)
-          -- Wait a frames to be sure it's all done, and camera has rerendered the entire frame
-          Yield(WaitForEndOfFrame())
-          
-          -- os.date("%x_%X") will produce 07/19/17_12:00:15, those aren't valid filename characters, so we replace them. 
-          -- this is less code then formatting day, month, year, hour, mins, seconds, seperatly I guess. 
-          local time = os.date("%x_%X")
-          local filename = string.gsub(string.gsub(time,"/","_"),":","_")
-          local path = Application.persistentDataPath .. "/screenshots/" .. filename .. ".png"
+      local aa_enabled = self.pp.profile.antialiasing.enabled
+      self.pp.profile.antialiasing.enabled = false
+      self.canvasGroup.alpha = 0
+      local mm = GameObject.Find("MainMenu")
+      mm:SetActive(false)
+      local time = os.date("%x_%X")
+      local filename = string.gsub(string.gsub(time,"/","_"),":","_")
+      local path = Application.persistentDataPath .. "/screenshots/" .. filename .. ".png"
 
-          Application.CaptureScreenshot(path,self.superSize)
-
-          --Wait for a second, to make sure the screenshot is actually written to, otherwise you'll see UI in the picture!
-          Yield(WaitForSeconds(1.0))
-          -- Turn everything back on
+      HBU.TakeScreenshot(
+        path,
+        function()
           self.pp.profile.antialiasing.enabled = aa_enabled
           mm:SetActive(true)
           self.canvasGroup.alpha = 1
-          Debug.Log("Saved screenshot to " .. path)
-      end)
-      coroutine.resume(c)
+          self.takingPicture = false
+        end,
+        self.superSize
+      )
+      return
     end
     --handle zooming
     if( Time.time > self.lastScrollTime + 0.07) then
@@ -109,11 +110,11 @@ function Binocular:Update()
         end
       end
     end
-    
+
     --clamp and apply field of view
     self.curFieldOfView = Mathf.Clamp(self.curFieldOfView , 1,90)
     Camera.main.fieldOfView = self.curFieldOfView
-    
+
     --disable watch
     if( self.useGadgetSecondaryKey.GetKeyDown() ) then
       self:TurnOff()
@@ -122,17 +123,16 @@ function Binocular:Update()
     self:UpdateUI()
   end
 end
-
 function Binocular:UpdateUI()
-  --set ingame timer to ToD Cycle time 
+  --set ingame timer to ToD Cycle time
   local time = self.tod.Cycle.DateTime;
   self.timeText.text = time:ToString("HH:mm");
-  
+
   -- Calc&Set distance text
   local distance = "infinite"
   local ok,hitinfo = Physics.Raycast(Camera.main.transform.position,Camera.main.transform.forward, Slua.out)
-  if(ok) then 
-    distance = string.format("%.2f",hitinfo.distance) .. "m"
+  if(ok) then
+    distance = string.format("%.2fm",hitinfo.distance)
   end
   self.distanceText.text = distance
 end

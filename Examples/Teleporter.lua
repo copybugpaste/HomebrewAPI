@@ -1,11 +1,17 @@
+local Teleporter={}
+function main(gameObject)
+  Teleporter.gameObject = gameObject
+  return Teleporter;
+end
+
 function Teleporter:Awake()
   self.useGadgetKey = HBU.GetKey("UseGadget")
   self.useGadgetSecondaryKey = HBU.GetKey("UseGadgetSecondary")
   self.teleportLocations = HBU.GetTeleportLocations()
   self.showing = false
   self.teleportNodes = {}
-  self.aimedAtNode = nil
-  self.aimedAtTeleportLocation = nil
+  -- self.aimedAtNode = nil
+  -- self.aimedAtTeleportLocation = nil
   self.wormholeImage = HBU.LoadTexture2D(HBU.GetLuaFolder().."/GadgetLua/TeleportIcon.png")
   self.wormholeImage2 = HBU.LoadTexture2D(HBU.GetLuaFolder().."/GadgetLua/TeleportIcon2.png")
   self.ringImage = HBU.LoadTexture2D(HBU.GetLuaFolder().."/GadgetLua/TeleportRing.png")
@@ -16,7 +22,7 @@ end
 
 function Teleporter:OnDestroy()
   self:DestroyTeleportNodes()
-  if(self.teleporting)then 
+  if(self.teleporting)then
     Camera.main.fieldOfView = self.defaultFoV
     local obj = self.teleporterSettings.obj
     HBU.TeleportPlayer(self.teleporterSettings.obj.transform.position)
@@ -27,9 +33,9 @@ end
 
 function Teleporter:Update()
   if( HBU.MayControle() == false or HBU.InSeat() or HBU.InBuilder()) then return end
-  if not self.teleporting then 
+  if not self.teleporting then
     if( self.useGadgetSecondaryKey.GetKey() > 0.5 ) then
-      if( self.showing == false ) then 
+      if( self.showing == false ) then
         self.showing = true
         self:CreateTeleportNodes()
       else
@@ -52,31 +58,28 @@ end
 
 function Teleporter:UpdateTP()
     local s = self.teleporterSettings
-    if(s.updatePos) then 
+    if(s.updatePos) then
       s.player.transform.position = Vector3.MoveTowards(s.player.transform.position, s.obj.transform.position, s.speed * 10)
       s.speed = s.speed + (s.speed * Time.deltaTime * 10)
-      if(Vector3.Distance(s.player.transform.position, s.obj.transform.position) < 0.5) then 
+      if(Vector3.Distance(s.player.transform.position, s.obj.transform.position) < 0.5) then
         s.updatePos = false
       end
       Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 170, Mathf.Clamp01(s.speed/500))
-    else 
+    else
       Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, self.defaultFoV, Time.deltaTime * self.defaultFoV)
-      if(Camera.main.fieldOfView == self.defaultFoV) then 
-        self.teleporting = false 
+      if(Camera.main.fieldOfView == self.defaultFoV) then
+        self.teleporting = false
         Camera.main.fieldOfView = self.defaultFoV
         HBU.TeleportPlayer(s.obj.transform.position)
         self.teleporterSettings.rb.isKinematic = false
-      end 
+      end
     end
 end
 
 function Teleporter:SetDefaults()
     self.teleporterSettings = {
-    player = nil,
     updatePos = true,
-    speed = 4,
-    obj = nil,
-    rb = nil,
+    speed = 1,
   }
 end
 
@@ -95,7 +98,7 @@ function Teleporter:CreateTeleportNodes()
     node.transform.sizeDelta = Vector2(32,32)
     local canvasGroup = node:AddComponent("UnityEngine.CanvasGroup")
     canvasGroup.alpha = 0.2
-    
+
     local img = HBU.Instantiate("RawImage",node)
     img.name = "WormHole"
     img.transform.anchorMin = Vector2.zero
@@ -104,7 +107,7 @@ function Teleporter:CreateTeleportNodes()
     img.transform.offsetMax = Vector2.zero
     img:GetComponent("RawImage").texture = self.wormholeImage
     img:GetComponent("RawImage").color = i.color
-    
+
     local img2 = HBU.Instantiate("RawImage",node)
     img2.name = "WormHole2"
     img2.transform.anchorMin = Vector2.zero
@@ -113,7 +116,7 @@ function Teleporter:CreateTeleportNodes()
     img2.transform.offsetMax = Vector2.zero
     img2:GetComponent("RawImage").texture = self.wormholeImage2
     img2:GetComponent("RawImage").color = i.color
-    
+
     local rotSpeed = Mathf.Clamp(Random.value,0.5,1)
     self.teleportNodes[#self.teleportNodes+1] = { node , i , img2 , rotSpeed }
   end
@@ -126,7 +129,7 @@ function Teleporter:UpdateTeleportNodes()
     --screenPos.y = Screen.height - screenPos.y
     screenPos.x = screenPos.x - (Screen.width * 0.5)
     screenPos.y = screenPos.y - (Screen.height * 0.5)
-    if( screenPos.z < 0 ) then 
+    if( screenPos.z < 0 ) then
       screenPos.y = 1000000
     end
     screenPos.z = 0
@@ -137,7 +140,7 @@ function Teleporter:UpdateTeleportNodes()
   end
 end
 
-function Teleporter:DestroyTeleportNodes() 
+function Teleporter:DestroyTeleportNodes()
   if( self.ring ~= nil ) then GameObject.Destroy(self.ring) end
   for i,v in pairs(self.teleportNodes) do
     GameObject.Destroy(v[1])
@@ -145,7 +148,7 @@ function Teleporter:DestroyTeleportNodes()
   self.teleportNodes = {}
 end
 
-function Teleporter:AimCheck() 
+function Teleporter:AimCheck()
   --return the teleport node that we are aimaing at
   local closest = 10
   local closestNode = nil
@@ -153,7 +156,7 @@ function Teleporter:AimCheck()
   local closestTeleportLocation
   local closestTeleportColor
   for i,v in pairs( self.teleportNodes ) do
-    local ang = Vector3.Angle(Camera.main.transform.forward,v[2].transform.position-Camera.main.transform.position) 
+    local ang = Vector3.Angle(Camera.main.transform.forward,v[2].transform.position-Camera.main.transform.position)
     if( ang < closest ) then
       closest = ang
       closestNode = v[1]
@@ -162,14 +165,14 @@ function Teleporter:AimCheck()
       closestTeleportColor = v[2].color
     end
   end
-  
+
   if( self.aimedAtNode == nil or self.aimedAtNode ~= closestNode ) then
-   
+
     --un highlight prev node if any
     if( Slua.IsNull(self.aimedAtNode) == false ) then
       --set ring color
       self.ring:GetComponent("RawImage").color = Color(0.5,0.5,0.5,1)
-      
+
       --reset the size of the rect
       self.aimedAtNode.transform.sizeDelta = Vector2(32,32)
       --bring alpha back down
@@ -183,7 +186,7 @@ function Teleporter:AimCheck()
     if( Slua.IsNull(closestNode) == false ) then
       --set ring color
       self.ring:GetComponent("RawImage").color = closestTeleportColor
-    
+
       --move up in draw cahin
       closestNode.transform:SetAsLastSibling()
       --increase size of rect
@@ -211,31 +214,31 @@ function Teleporter:AimCheck()
   self.aimedAtTeleportLocation = closestTeleportLocation
 end
 
-function Teleporter:Teleport( obj ) 
+function Teleporter:Teleport( obj )
   if(self.teleporting) then return end
   if( Slua.IsNull(obj) ) then return end
 
-  if(Slua.IsNull(self.teleporterSettings.player)) then 
+  if(Slua.IsNull(self.teleporterSettings.player)) then
     local player = GameObject.Find("Player")
-    if(Slua.IsNull(player)) then 
+    if(Slua.IsNull(player)) then
       return
-    else 
+    else
       self.teleporterSettings.player = player
     end
   end
 
-  if(Slua.IsNull(self.teleporterSettings.rb)) then 
+  if(Slua.IsNull(self.teleporterSettings.rb)) then
     local rb = self.teleporterSettings.player.gameObject:GetComponent("Rigidbody")
-    if(Slua.IsNull(rb)) then 
+    if(Slua.IsNull(rb)) then
       return
     else
       self.teleporterSettings.rb = rb
     end
   end
-  
+
   self.teleporterSettings.rb.isKinematic = true
   self.teleporting = true
-  self.teleporterSettings.speed = 4
+  self.teleporterSettings.speed = 1
   self.teleporterSettings.obj = obj
   self.teleporterSettings.updatePos = true
 end
