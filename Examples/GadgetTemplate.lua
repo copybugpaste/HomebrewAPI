@@ -1,12 +1,12 @@
-local gadgetName = {}
+local Gadget = {}
 function main(gameObject)
-  gadgetName.gameObject = gameObject
-  return gadgetName
+  Gadget.gameObject = gameObject
+  return Gadget
 end
 
-function gadgetName:Start()
+function Gadget:Start()
   Debug.Log("Custom gadget has started!")
 end
-function gadgetName:OnDestroy()
+function Gadget:OnDestroy()
   Debug.Log("Custom gadget has stopped")
 end
