@@ -1,0 +1,3755 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>HBU</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>HBU</code></h1>
+<p>OnApplicationQuit.</p>
+<p></p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#GetSetting">GetSetting (setting)</a></td>
+	<td class="summary">GetSetting.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetPlayers">GetPlayers ()</a></td>
+	<td class="summary">GetPlayers.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#TakeScreenshot">TakeScreenshot (path, onFinished, superSize)</a></td>
+	<td class="summary">TakeScreenshot.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#TeleportPlayer">TeleportPlayer (pos)</a></td>
+	<td class="summary">TeleportPlayer.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AttachWaypoint">AttachWaypoint (obj, pos, type, team, text, enableInBuilder, enableInMenu, enableIfSelected, enableIfEnemy)</a></td>
+	<td class="summary">AttachWaypoint.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DestroyWaypoint">DestroyWaypoint (obj)</a></td>
+	<td class="summary">DestroyWaypoint.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetTeleportLocations">GetTeleportLocations ()</a></td>
+	<td class="summary">GetTeleportLocations.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetNearestTeleportLocation">GetNearestTeleportLocation ()</a></td>
+	<td class="summary">GetNearestTeleportLocation.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InSeat">InSeat ()</a></td>
+	<td class="summary">InSeat.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MayControle">MayControle ()</a></td>
+	<td class="summary">MayControle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InBuilder">InBuilder ()</a></td>
+	<td class="summary">InBuilder.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetKey">GetKey (name)</a></td>
+	<td class="summary">GetKey.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetVehicleCountLimit">GetVehicleCountLimit ()</a></td>
+	<td class="summary">GetVehicleCountLimit.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetMyOldestVehicle">GetMyOldestVehicle ()</a></td>
+	<td class="summary">GetMyOldestVehicle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetSpawnError">GetSpawnError (assetPath)</a></td>
+	<td class="summary">GetSpawnError.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CanSpawnVehicle">CanSpawnVehicle (assetPath)</a></td>
+	<td class="summary">CanSpawnVehicle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SpawnVehicle">SpawnVehicle (position, rotation, assetPath)</a></td>
+	<td class="summary">SpawnVehicle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SpawnVehicleAsync">SpawnVehicleAsync (position, rotation, assetPath, onReturn, onError)</a></td>
+	<td class="summary">SpawnVehicleAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#StopSpawnVehicleAsync">StopSpawnVehicleAsync (id)</a></td>
+	<td class="summary">StopSpawnVehicleAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InitializeVehicle">InitializeVehicle (vehicle)</a></td>
+	<td class="summary">InitializeVehicle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DropVehicle">DropVehicle (vehicle)</a></td>
+	<td class="summary">DropVehicle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CleanupVehicle">CleanupVehicle ()</a></td>
+	<td class="summary">CleanupVehicle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#OpenBrowser">OpenBrowser (path, types, tags, onReturn, onCancel)</a></td>
+	<td class="summary">OpenBrowser.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SaveValue">SaveValue (name, valueName, value)</a></td>
+	<td class="summary">SaveValue.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LoadValue">LoadValue (name, valueName)</a></td>
+	<td class="summary">LoadValue.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FindTool">FindTool (nam)</a></td>
+	<td class="summary">FindTool.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#EnableGadgetMouseScroll">EnableGadgetMouseScroll ()</a></td>
+	<td class="summary">EnableGadgetMouseScroll.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DisableGadgetMouseScroll">DisableGadgetMouseScroll ()</a></td>
+	<td class="summary">DisableGadgetMouseScroll.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByDateAscendingAsync">SortByDateAscendingAsync (paths, OnDone)</a></td>
+	<td class="summary">SortByDateAscendingAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByDateDescendingAsync">SortByDateDescendingAsync (paths, OnDone)</a></td>
+	<td class="summary">SortByDateDescendingAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByNameAscendingAsync">SortByNameAscendingAsync (paths, OnDone)</a></td>
+	<td class="summary">SortByNameAscendingAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByNameDescendingAsync">SortByNameDescendingAsync (paths, OnDone)</a></td>
+	<td class="summary">SortByNameDescendingAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByLastAccessedAscendingAsync">SortByLastAccessedAscendingAsync (paths, OnDone)</a></td>
+	<td class="summary">SortByLastAccessedAscendingAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByLastAccessedDescendingAsync">SortByLastAccessedDescendingAsync (paths, OnDone)</a></td>
+	<td class="summary">SortByLastAccessedDescendingAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByDateAscending">SortByDateAscending (paths)</a></td>
+	<td class="summary">SortByDateAscending.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByDateDescending">SortByDateDescending (paths)</a></td>
+	<td class="summary">SortByDateDescending.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByNameAscending">SortByNameAscending (paths)</a></td>
+	<td class="summary">SortByNameAscending.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByNameDescending">SortByNameDescending (paths)</a></td>
+	<td class="summary">SortByNameDescending.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByLastAccessedAscending">SortByLastAccessedAscending (paths)</a></td>
+	<td class="summary">SortByLastAccessedAscending.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SortByLastAccessedDescending">SortByLastAccessedDescending (paths)</a></td>
+	<td class="summary">SortByLastAccessedDescending.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetFileAsync">GetAssetFileAsync (p, OnDone)</a></td>
+	<td class="summary">GetAssetFileAsync.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetImage">GetAssetImage (p)</a></td>
+	<td class="summary">GetAssetImage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetFile">GetAssetFile (p)</a></td>
+	<td class="summary">GetAssetFile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetType">GetAssetType (p)</a></td>
+	<td class="summary">GetAssetType.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetName">GetAssetName (p)</a></td>
+	<td class="summary">GetAssetName.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetInfo">GetAssetInfo (p)</a></td>
+	<td class="summary">GetAssetInfo.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAssetTypeInfo">GetAssetTypeInfo (p)</a></td>
+	<td class="summary">GetAssetTypeInfo.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DeleteAsset">DeleteAsset (p)</a></td>
+	<td class="summary">DeleteAsset.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CopyAsset">CopyAsset (p, np)</a></td>
+	<td class="summary">CopyAsset.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MoveAsset">MoveAsset (p, np)</a></td>
+	<td class="summary">MoveAsset.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#RenameAsset">RenameAsset (p, fn)</a></td>
+	<td class="summary">RenameAsset.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CreateDirectory">CreateDirectory (p)</a></td>
+	<td class="summary">CreateDirectory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CopyDirectory">CopyDirectory (p, np)</a></td>
+	<td class="summary">CopyDirectory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MoveDirectory">MoveDirectory (p, np)</a></td>
+	<td class="summary">MoveDirectory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DeleteDirectory">DeleteDirectory (p, np)</a></td>
+	<td class="summary">DeleteDirectory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FileExists">FileExists (p)</a></td>
+	<td class="summary">FileExists.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CopyFile">CopyFile (pf, pt)</a></td>
+	<td class="summary">CopyFile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#MoveFile">MoveFile (pf, pt)</a></td>
+	<td class="summary">MoveFile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetRandomID">GetRandomID ()</a></td>
+	<td class="summary">GetRandomID.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#DeleteCacheFolder">DeleteCacheFolder (path)</a></td>
+	<td class="summary">DeleteCacheFolder.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CreateCacheFolder">CreateCacheFolder (path)</a></td>
+	<td class="summary">CreateCacheFolder.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetExeFolder">GetExeFolder ()</a></td>
+	<td class="summary">GetExeFolder.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetLuaFolder">GetLuaFolder ()</a></td>
+	<td class="summary">GetLuaFolder.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetUserDataPath">GetUserDataPath ()</a></td>
+	<td class="summary">GetUserDataPath.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetFileName">GetFileName (p)</a></td>
+	<td class="summary">GetFileName.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetFileNameWithoutExtension">GetFileNameWithoutExtension (p)</a></td>
+	<td class="summary">GetFileNameWithoutExtension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetExtension">GetExtension (p)</a></td>
+	<td class="summary">GetExtension.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetDirectoryName">GetDirectoryName (p)</a></td>
+	<td class="summary">GetDirectoryName.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlLoad">XmlLoad (path)</a></td>
+	<td class="summary">XmlLoad.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlFind">XmlFind (el, path)</a></td>
+	<td class="summary">XmlFind.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlElements">XmlElements (el, name)</a></td>
+	<td class="summary">XmlElements.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlValue">XmlValue (el)</a></td>
+	<td class="summary">XmlValue.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlCreate">XmlCreate (nam)</a></td>
+	<td class="summary">XmlCreate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlAdd">XmlAdd (el, n)</a></td>
+	<td class="summary">XmlAdd.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlSet">XmlSet (el, val)</a></td>
+	<td class="summary">XmlSet.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlSave">XmlSave (el, path)</a></td>
+	<td class="summary">XmlSave.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#XmlClose">XmlClose (el)</a></td>
+	<td class="summary">XmlClose.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetAllInspectorComponentConfigFiles">GetAllInspectorComponentConfigFiles ()</a></td>
+	<td class="summary">GetAllInspectorComponentConfigFiles.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#FindInspectorComponentConfigFile">FindInspectorComponentConfigFile (componentName)</a></td>
+	<td class="summary">FindInspectorComponentConfigFile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LoadTexture2D">LoadTexture2D (path)</a></td>
+	<td class="summary">LoadTexture2D.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SaveTexture2D">SaveTexture2D (t, path)</a></td>
+	<td class="summary">SaveTexture2D.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetPrimitiveUI">GetPrimitiveUI (p)</a></td>
+	<td class="summary">GetPrimitiveUI.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Layout">Layout (o, ignore, minWidth, minHeight, preferredHeight, preferredWidth, flexibleHeight, flexibleWidth)</a></td>
+	<td class="summary">Layout.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LayoutMin">LayoutMin (o, minWidth, minHeight)</a></td>
+	<td class="summary">LayoutMin.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LayoutPreferred">LayoutPreferred (o, preferredWidth, preferredHeight)</a></td>
+	<td class="summary">LayoutPreferred.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LayoutFlexible">LayoutFlexible (o, flexibleWidth, flexibleHeight)</a></td>
+	<td class="summary">LayoutFlexible.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LayoutPadding">LayoutPadding (o, top, left, right, bottom)</a></td>
+	<td class="summary">LayoutPadding.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#OverGUI">OverGUI ()</a></td>
+	<td class="summary">OverGUI.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Typing">Typing ()</a></td>
+	<td class="summary">Typing.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#AddComponentLua">AddComponentLua (o, sctiptName)</a></td>
+	<td class="summary">AddComponentLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetComponentLua">GetComponentLua (o, scriptName)</a></td>
+	<td class="summary">GetComponentLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetComponentsLua">GetComponentsLua (o, scriptName)</a></td>
+	<td class="summary">GetComponentsLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetComponentInParentLua">GetComponentInParentLua (o, scriptName)</a></td>
+	<td class="summary">GetComponentInParentLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetComponentsInParentLua">GetComponentsInParentLua (o, scriptName)</a></td>
+	<td class="summary">GetComponentsInParentLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetComponentInChildrenLua">GetComponentInChildrenLua (o, scriptName)</a></td>
+	<td class="summary">GetComponentInChildrenLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetComponentsInChildrenLua">GetComponentsInChildrenLua (o, scriptName)</a></td>
+	<td class="summary">GetComponentsInChildrenLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#InitLua">InitLua ()</a></td>
+	<td class="summary">InitLua.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LuaInited">LuaInited ()</a></td>
+	<td class="summary">LuaInited.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Log">Log (text)</a></td>
+	<td class="summary">Log.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LogError">LogError (text)</a></td>
+	<td class="summary">LogError.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LogWarning">LogWarning (text)</a></td>
+	<td class="summary">LogWarning.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GrabStructure">GrabStructure (root, addSelf)</a></td>
+	<td class="summary">GrabStructure.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HBInstantiate">HBInstantiate (assetPath)</a></td>
+	<td class="summary">HBInstantiate.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#HBSerialize">HBSerialize (obj, assetPath, assetType, picture)</a></td>
+	<td class="summary">HBSerialize.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnZip">UnZip (path, extractPath)</a></td>
+	<td class="summary">UnZip.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ZipFile">ZipFile (path, destinationPath)</a></td>
+	<td class="summary">ZipFile.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ZipDirectory">ZipDirectory (path, destinationPath)</a></td>
+	<td class="summary">ZipDirectory.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#Type">Type (o)</a></td>
+	<td class="summary">Type.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#IsRelativeVar">IsRelativeVar (target, o)</a></td>
+	<td class="summary">IsRelativeVar.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#IsRelativeType">IsRelativeType (o)</a></td>
+	<td class="summary">IsRelativeType.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#IsComponentType">IsComponentType (o)</a></td>
+	<td class="summary">IsComponentType.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#IsGameObjectType">IsGameObjectType (o)</a></td>
+	<td class="summary">IsGameObjectType.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#CastVar">CastVar (o, target)</a></td>
+	<td class="summary">CastVar.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetIcon">GetIcon (p)</a></td>
+	<td class="summary">GetIcon.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#LoadAllIcons">LoadAllIcons ()</a></td>
+	<td class="summary">LoadAllIcons.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#UnLoadAllIcons">UnLoadAllIcons ()</a></td>
+	<td class="summary">UnLoadAllIcons.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetLanguage">GetLanguage ()</a></td>
+	<td class="summary">GetLanguage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#SetLanguage">SetLanguage (l)</a></td>
+	<td class="summary">SetLanguage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetInfoInLanguage">GetInfoInLanguage (p, l)</a></td>
+	<td class="summary">GetInfoInLanguage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetKeywordInLanguage">GetKeywordInLanguage (k, l)</a></td>
+	<td class="summary">GetKeywordInLanguage.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetCopyName">GetCopyName (s)</a></td>
+	<td class="summary">GetCopyName.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ToUppercase">ToUppercase (s)</a></td>
+	<td class="summary">ToUppercase.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ToLowercase">ToLowercase (s)</a></td>
+	<td class="summary">ToLowercase.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ToUppercaseFirst">ToUppercaseFirst (s)</a></td>
+	<td class="summary">ToUppercaseFirst.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ToUppercaseWords">ToUppercaseWords (value)</a></td>
+	<td class="summary">ToUppercaseWords.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetColorFromLinkType">GetColorFromLinkType (linktype)</a></td>
+	<td class="summary">GetColorFromLinkType.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetMaterial">GetMaterial (nam)</a></td>
+	<td class="summary">GetMaterial.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetMaterialReversedToggle">GetMaterialReversedToggle (mat)</a></td>
+	<td class="summary">GetMaterialReversedToggle.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetMaterialReverse">GetMaterialReverse (mat)</a></td>
+	<td class="summary">GetMaterialReverse.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetMaterialNormal">GetMaterialNormal (mat)</a></td>
+	<td class="summary">GetMaterialNormal.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#GetMaterialCulling">GetMaterialCulling (mat)</a></td>
+	<td class="summary">GetMaterialCulling.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "GetSetting"></a>
+    <strong>GetSetting (setting)</strong>
+    </dt>
+    <dd>
+    GetSetting.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">setting</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Single
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetPlayers"></a>
+    <strong>GetPlayers ()</strong>
+    </dt>
+    <dd>
+    GetPlayers.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        OtherPlayer[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TakeScreenshot"></a>
+    <strong>TakeScreenshot (path, onFinished, superSize)</strong>
+    </dt>
+    <dd>
+    TakeScreenshot.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+        <li><span class="parameter">onFinished</span>
+         of type Action
+        </li>
+        <li><span class="parameter">superSize</span>
+         of type Int32
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "TeleportPlayer"></a>
+    <strong>TeleportPlayer (pos)</strong>
+    </dt>
+    <dd>
+    TeleportPlayer.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pos</span>
+         of type Vector3
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AttachWaypoint"></a>
+    <strong>AttachWaypoint (obj, pos, type, team, text, enableInBuilder, enableInMenu, enableIfSelected, enableIfEnemy)</strong>
+    </dt>
+    <dd>
+    AttachWaypoint.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">pos</span>
+         of type Vector3
+        </li>
+        <li><span class="parameter">type</span>
+         of type String
+        </li>
+        <li><span class="parameter">team</span>
+         of type String
+        </li>
+        <li><span class="parameter">text</span>
+         of type String
+        </li>
+        <li><span class="parameter">enableInBuilder</span>
+         of type Boolean
+        </li>
+        <li><span class="parameter">enableInMenu</span>
+         of type Boolean
+        </li>
+        <li><span class="parameter">enableIfSelected</span>
+         of type Boolean
+        </li>
+        <li><span class="parameter">enableIfEnemy</span>
+         of type Boolean
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DestroyWaypoint"></a>
+    <strong>DestroyWaypoint (obj)</strong>
+    </dt>
+    <dd>
+    DestroyWaypoint.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+         of type GameObject
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetTeleportLocations"></a>
+    <strong>GetTeleportLocations ()</strong>
+    </dt>
+    <dd>
+    GetTeleportLocations.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        TeleportLocation[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetNearestTeleportLocation"></a>
+    <strong>GetNearestTeleportLocation ()</strong>
+    </dt>
+    <dd>
+    GetNearestTeleportLocation.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        TeleportLocation
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InSeat"></a>
+    <strong>InSeat ()</strong>
+    </dt>
+    <dd>
+    InSeat.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MayControle"></a>
+    <strong>MayControle ()</strong>
+    </dt>
+    <dd>
+    MayControle.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InBuilder"></a>
+    <strong>InBuilder ()</strong>
+    </dt>
+    <dd>
+    InBuilder.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetKey"></a>
+    <strong>GetKey (name)</strong>
+    </dt>
+    <dd>
+    GetKey.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        HBKeyBind
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetVehicleCountLimit"></a>
+    <strong>GetVehicleCountLimit ()</strong>
+    </dt>
+    <dd>
+    GetVehicleCountLimit.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Int32
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetMyOldestVehicle"></a>
+    <strong>GetMyOldestVehicle ()</strong>
+    </dt>
+    <dd>
+    GetMyOldestVehicle.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetSpawnError"></a>
+    <strong>GetSpawnError (assetPath)</strong>
+    </dt>
+    <dd>
+    GetSpawnError.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">assetPath</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CanSpawnVehicle"></a>
+    <strong>CanSpawnVehicle (assetPath)</strong>
+    </dt>
+    <dd>
+    CanSpawnVehicle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">assetPath</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SpawnVehicle"></a>
+    <strong>SpawnVehicle (position, rotation, assetPath)</strong>
+    </dt>
+    <dd>
+    SpawnVehicle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+         of type Vector3
+        </li>
+        <li><span class="parameter">rotation</span>
+         of type Quaternion
+        </li>
+        <li><span class="parameter">assetPath</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SpawnVehicleAsync"></a>
+    <strong>SpawnVehicleAsync (position, rotation, assetPath, onReturn, onError)</strong>
+    </dt>
+    <dd>
+    SpawnVehicleAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">position</span>
+         of type Vector3
+        </li>
+        <li><span class="parameter">rotation</span>
+         of type Quaternion
+        </li>
+        <li><span class="parameter">assetPath</span>
+         of type String
+        </li>
+        <li><span class="parameter">onReturn</span>
+         of type Action`1
+        </li>
+        <li><span class="parameter">onError</span>
+         of type Action`1
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Int32
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "StopSpawnVehicleAsync"></a>
+    <strong>StopSpawnVehicleAsync (id)</strong>
+    </dt>
+    <dd>
+    StopSpawnVehicleAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">id</span>
+         of type Int32
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InitializeVehicle"></a>
+    <strong>InitializeVehicle (vehicle)</strong>
+    </dt>
+    <dd>
+    InitializeVehicle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vehicle</span>
+         of type GameObject
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DropVehicle"></a>
+    <strong>DropVehicle (vehicle)</strong>
+    </dt>
+    <dd>
+    DropVehicle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">vehicle</span>
+         of type GameObject
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CleanupVehicle"></a>
+    <strong>CleanupVehicle ()</strong>
+    </dt>
+    <dd>
+    CleanupVehicle.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "OpenBrowser"></a>
+    <strong>OpenBrowser (path, types, tags, onReturn, onCancel)</strong>
+    </dt>
+    <dd>
+    OpenBrowser.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+        <li><span class="parameter">types</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">tags</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">onReturn</span>
+         of type Action`1
+        </li>
+        <li><span class="parameter">onCancel</span>
+         of type Action
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SaveValue"></a>
+    <strong>SaveValue (name, valueName, value)</strong>
+    </dt>
+    <dd>
+    SaveValue.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         of type String
+        </li>
+        <li><span class="parameter">valueName</span>
+         of type String
+        </li>
+        <li><span class="parameter">value</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadValue"></a>
+    <strong>LoadValue (name, valueName)</strong>
+    </dt>
+    <dd>
+    LoadValue.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">name</span>
+         of type String
+        </li>
+        <li><span class="parameter">valueName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "FindTool"></a>
+    <strong>FindTool (nam)</strong>
+    </dt>
+    <dd>
+    FindTool.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">nam</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "EnableGadgetMouseScroll"></a>
+    <strong>EnableGadgetMouseScroll ()</strong>
+    </dt>
+    <dd>
+    EnableGadgetMouseScroll.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DisableGadgetMouseScroll"></a>
+    <strong>DisableGadgetMouseScroll ()</strong>
+    </dt>
+    <dd>
+    DisableGadgetMouseScroll.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByDateAscendingAsync"></a>
+    <strong>SortByDateAscendingAsync (paths, OnDone)</strong>
+    </dt>
+    <dd>
+    SortByDateAscendingAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByDateDescendingAsync"></a>
+    <strong>SortByDateDescendingAsync (paths, OnDone)</strong>
+    </dt>
+    <dd>
+    SortByDateDescendingAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByNameAscendingAsync"></a>
+    <strong>SortByNameAscendingAsync (paths, OnDone)</strong>
+    </dt>
+    <dd>
+    SortByNameAscendingAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByNameDescendingAsync"></a>
+    <strong>SortByNameDescendingAsync (paths, OnDone)</strong>
+    </dt>
+    <dd>
+    SortByNameDescendingAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByLastAccessedAscendingAsync"></a>
+    <strong>SortByLastAccessedAscendingAsync (paths, OnDone)</strong>
+    </dt>
+    <dd>
+    SortByLastAccessedAscendingAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByLastAccessedDescendingAsync"></a>
+    <strong>SortByLastAccessedDescendingAsync (paths, OnDone)</strong>
+    </dt>
+    <dd>
+    SortByLastAccessedDescendingAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByDateAscending"></a>
+    <strong>SortByDateAscending (paths)</strong>
+    </dt>
+    <dd>
+    SortByDateAscending.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByDateDescending"></a>
+    <strong>SortByDateDescending (paths)</strong>
+    </dt>
+    <dd>
+    SortByDateDescending.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByNameAscending"></a>
+    <strong>SortByNameAscending (paths)</strong>
+    </dt>
+    <dd>
+    SortByNameAscending.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByNameDescending"></a>
+    <strong>SortByNameDescending (paths)</strong>
+    </dt>
+    <dd>
+    SortByNameDescending.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByLastAccessedAscending"></a>
+    <strong>SortByLastAccessedAscending (paths)</strong>
+    </dt>
+    <dd>
+    SortByLastAccessedAscending.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SortByLastAccessedDescending"></a>
+    <strong>SortByLastAccessedDescending (paths)</strong>
+    </dt>
+    <dd>
+    SortByLastAccessedDescending.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">paths</span>
+         of type String[]
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetFileAsync"></a>
+    <strong>GetAssetFileAsync (p, OnDone)</strong>
+    </dt>
+    <dd>
+    GetAssetFileAsync.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">OnDone</span>
+         of type Action`1
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetImage"></a>
+    <strong>GetAssetImage (p)</strong>
+    </dt>
+    <dd>
+    GetAssetImage.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Texture2D
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetFile"></a>
+    <strong>GetAssetFile (p)</strong>
+    </dt>
+    <dd>
+    GetAssetFile.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetType"></a>
+    <strong>GetAssetType (p)</strong>
+    </dt>
+    <dd>
+    GetAssetType.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetName"></a>
+    <strong>GetAssetName (p)</strong>
+    </dt>
+    <dd>
+    GetAssetName.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetInfo"></a>
+    <strong>GetAssetInfo (p)</strong>
+    </dt>
+    <dd>
+    GetAssetInfo.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAssetTypeInfo"></a>
+    <strong>GetAssetTypeInfo (p)</strong>
+    </dt>
+    <dd>
+    GetAssetTypeInfo.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DeleteAsset"></a>
+    <strong>DeleteAsset (p)</strong>
+    </dt>
+    <dd>
+    DeleteAsset.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CopyAsset"></a>
+    <strong>CopyAsset (p, np)</strong>
+    </dt>
+    <dd>
+    CopyAsset.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">np</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MoveAsset"></a>
+    <strong>MoveAsset (p, np)</strong>
+    </dt>
+    <dd>
+    MoveAsset.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">np</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "RenameAsset"></a>
+    <strong>RenameAsset (p, fn)</strong>
+    </dt>
+    <dd>
+    RenameAsset.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">fn</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CreateDirectory"></a>
+    <strong>CreateDirectory (p)</strong>
+    </dt>
+    <dd>
+    CreateDirectory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CopyDirectory"></a>
+    <strong>CopyDirectory (p, np)</strong>
+    </dt>
+    <dd>
+    CopyDirectory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">np</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MoveDirectory"></a>
+    <strong>MoveDirectory (p, np)</strong>
+    </dt>
+    <dd>
+    MoveDirectory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">np</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DeleteDirectory"></a>
+    <strong>DeleteDirectory (p, np)</strong>
+    </dt>
+    <dd>
+    DeleteDirectory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">np</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "FileExists"></a>
+    <strong>FileExists (p)</strong>
+    </dt>
+    <dd>
+    FileExists.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CopyFile"></a>
+    <strong>CopyFile (pf, pt)</strong>
+    </dt>
+    <dd>
+    CopyFile.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pf</span>
+         of type String
+        </li>
+        <li><span class="parameter">pt</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "MoveFile"></a>
+    <strong>MoveFile (pf, pt)</strong>
+    </dt>
+    <dd>
+    MoveFile.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pf</span>
+         of type String
+        </li>
+        <li><span class="parameter">pt</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetRandomID"></a>
+    <strong>GetRandomID ()</strong>
+    </dt>
+    <dd>
+    GetRandomID.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "DeleteCacheFolder"></a>
+    <strong>DeleteCacheFolder (path)</strong>
+    </dt>
+    <dd>
+    DeleteCacheFolder.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CreateCacheFolder"></a>
+    <strong>CreateCacheFolder (path)</strong>
+    </dt>
+    <dd>
+    CreateCacheFolder.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetExeFolder"></a>
+    <strong>GetExeFolder ()</strong>
+    </dt>
+    <dd>
+    GetExeFolder.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetLuaFolder"></a>
+    <strong>GetLuaFolder ()</strong>
+    </dt>
+    <dd>
+    GetLuaFolder.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetUserDataPath"></a>
+    <strong>GetUserDataPath ()</strong>
+    </dt>
+    <dd>
+    GetUserDataPath.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetFileName"></a>
+    <strong>GetFileName (p)</strong>
+    </dt>
+    <dd>
+    GetFileName.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetFileNameWithoutExtension"></a>
+    <strong>GetFileNameWithoutExtension (p)</strong>
+    </dt>
+    <dd>
+    GetFileNameWithoutExtension.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetExtension"></a>
+    <strong>GetExtension (p)</strong>
+    </dt>
+    <dd>
+    GetExtension.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetDirectoryName"></a>
+    <strong>GetDirectoryName (p)</strong>
+    </dt>
+    <dd>
+    GetDirectoryName.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlLoad"></a>
+    <strong>XmlLoad (path)</strong>
+    </dt>
+    <dd>
+    XmlLoad.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        XElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlFind"></a>
+    <strong>XmlFind (el, path)</strong>
+    </dt>
+    <dd>
+    XmlFind.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        XElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlElements"></a>
+    <strong>XmlElements (el, name)</strong>
+    </dt>
+    <dd>
+    XmlElements.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+        <li><span class="parameter">name</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        XElement[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlValue"></a>
+    <strong>XmlValue (el)</strong>
+    </dt>
+    <dd>
+    XmlValue.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlCreate"></a>
+    <strong>XmlCreate (nam)</strong>
+    </dt>
+    <dd>
+    XmlCreate.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">nam</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        XElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlAdd"></a>
+    <strong>XmlAdd (el, n)</strong>
+    </dt>
+    <dd>
+    XmlAdd.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+        <li><span class="parameter">n</span>
+         of type XElement
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlSet"></a>
+    <strong>XmlSet (el, val)</strong>
+    </dt>
+    <dd>
+    XmlSet.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+        <li><span class="parameter">val</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlSave"></a>
+    <strong>XmlSave (el, path)</strong>
+    </dt>
+    <dd>
+    XmlSave.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "XmlClose"></a>
+    <strong>XmlClose (el)</strong>
+    </dt>
+    <dd>
+    XmlClose.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">el</span>
+         of type XElement
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetAllInspectorComponentConfigFiles"></a>
+    <strong>GetAllInspectorComponentConfigFiles ()</strong>
+    </dt>
+    <dd>
+    GetAllInspectorComponentConfigFiles.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "FindInspectorComponentConfigFile"></a>
+    <strong>FindInspectorComponentConfigFile (componentName)</strong>
+    </dt>
+    <dd>
+    FindInspectorComponentConfigFile.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">componentName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadTexture2D"></a>
+    <strong>LoadTexture2D (path)</strong>
+    </dt>
+    <dd>
+    LoadTexture2D.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Texture2D
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SaveTexture2D"></a>
+    <strong>SaveTexture2D (t, path)</strong>
+    </dt>
+    <dd>
+    SaveTexture2D.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">t</span>
+         of type Texture2D
+        </li>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetPrimitiveUI"></a>
+    <strong>GetPrimitiveUI (p)</strong>
+    </dt>
+    <dd>
+    GetPrimitiveUI.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Layout"></a>
+    <strong>Layout (o, ignore, minWidth, minHeight, preferredHeight, preferredWidth, flexibleHeight, flexibleWidth)</strong>
+    </dt>
+    <dd>
+    Layout.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">ignore</span>
+         of type Boolean
+        </li>
+        <li><span class="parameter">minWidth</span>
+         of type Single
+        </li>
+        <li><span class="parameter">minHeight</span>
+         of type Single
+        </li>
+        <li><span class="parameter">preferredHeight</span>
+         of type Single
+        </li>
+        <li><span class="parameter">preferredWidth</span>
+         of type Single
+        </li>
+        <li><span class="parameter">flexibleHeight</span>
+         of type Single
+        </li>
+        <li><span class="parameter">flexibleWidth</span>
+         of type Single
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LayoutElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LayoutMin"></a>
+    <strong>LayoutMin (o, minWidth, minHeight)</strong>
+    </dt>
+    <dd>
+    LayoutMin.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">minWidth</span>
+         of type Single
+        </li>
+        <li><span class="parameter">minHeight</span>
+         of type Single
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LayoutElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LayoutPreferred"></a>
+    <strong>LayoutPreferred (o, preferredWidth, preferredHeight)</strong>
+    </dt>
+    <dd>
+    LayoutPreferred.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">preferredWidth</span>
+         of type Single
+        </li>
+        <li><span class="parameter">preferredHeight</span>
+         of type Single
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LayoutElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LayoutFlexible"></a>
+    <strong>LayoutFlexible (o, flexibleWidth, flexibleHeight)</strong>
+    </dt>
+    <dd>
+    LayoutFlexible.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">flexibleWidth</span>
+         of type Single
+        </li>
+        <li><span class="parameter">flexibleHeight</span>
+         of type Single
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LayoutElement
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LayoutPadding"></a>
+    <strong>LayoutPadding (o, top, left, right, bottom)</strong>
+    </dt>
+    <dd>
+    LayoutPadding.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">top</span>
+         of type Single
+        </li>
+        <li><span class="parameter">left</span>
+         of type Single
+        </li>
+        <li><span class="parameter">right</span>
+         of type Single
+        </li>
+        <li><span class="parameter">bottom</span>
+         of type Single
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "OverGUI"></a>
+    <strong>OverGUI ()</strong>
+    </dt>
+    <dd>
+    OverGUI.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Typing"></a>
+    <strong>Typing ()</strong>
+    </dt>
+    <dd>
+    Typing.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "AddComponentLua"></a>
+    <strong>AddComponentLua (o, sctiptName)</strong>
+    </dt>
+    <dd>
+    AddComponentLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">sctiptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetComponentLua"></a>
+    <strong>GetComponentLua (o, scriptName)</strong>
+    </dt>
+    <dd>
+    GetComponentLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">scriptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetComponentsLua"></a>
+    <strong>GetComponentsLua (o, scriptName)</strong>
+    </dt>
+    <dd>
+    GetComponentsLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">scriptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetComponentInParentLua"></a>
+    <strong>GetComponentInParentLua (o, scriptName)</strong>
+    </dt>
+    <dd>
+    GetComponentInParentLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">scriptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetComponentsInParentLua"></a>
+    <strong>GetComponentsInParentLua (o, scriptName)</strong>
+    </dt>
+    <dd>
+    GetComponentsInParentLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">scriptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetComponentInChildrenLua"></a>
+    <strong>GetComponentInChildrenLua (o, scriptName)</strong>
+    </dt>
+    <dd>
+    GetComponentInChildrenLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">scriptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetComponentsInChildrenLua"></a>
+    <strong>GetComponentsInChildrenLua (o, scriptName)</strong>
+    </dt>
+    <dd>
+    GetComponentsInChildrenLua.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">scriptName</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        LuaComponent[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "InitLua"></a>
+    <strong>InitLua ()</strong>
+    </dt>
+    <dd>
+    InitLua.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LuaInited"></a>
+    <strong>LuaInited ()</strong>
+    </dt>
+    <dd>
+    LuaInited.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Log"></a>
+    <strong>Log (text)</strong>
+    </dt>
+    <dd>
+    Log.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LogError"></a>
+    <strong>LogError (text)</strong>
+    </dt>
+    <dd>
+    LogError.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LogWarning"></a>
+    <strong>LogWarning (text)</strong>
+    </dt>
+    <dd>
+    LogWarning.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">text</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GrabStructure"></a>
+    <strong>GrabStructure (root, addSelf)</strong>
+    </dt>
+    <dd>
+    GrabStructure.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">root</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">addSelf</span>
+         of type Boolean
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject[]
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HBInstantiate"></a>
+    <strong>HBInstantiate (assetPath)</strong>
+    </dt>
+    <dd>
+    HBInstantiate.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">assetPath</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        GameObject
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "HBSerialize"></a>
+    <strong>HBSerialize (obj, assetPath, assetType, picture)</strong>
+    </dt>
+    <dd>
+    HBSerialize.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">assetPath</span>
+         of type String
+        </li>
+        <li><span class="parameter">assetType</span>
+         of type String
+        </li>
+        <li><span class="parameter">picture</span>
+         of type Texture2D
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnZip"></a>
+    <strong>UnZip (path, extractPath)</strong>
+    </dt>
+    <dd>
+    UnZip.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+        <li><span class="parameter">extractPath</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ZipFile"></a>
+    <strong>ZipFile (path, destinationPath)</strong>
+    </dt>
+    <dd>
+    ZipFile.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+        <li><span class="parameter">destinationPath</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ZipDirectory"></a>
+    <strong>ZipDirectory (path, destinationPath)</strong>
+    </dt>
+    <dd>
+    ZipDirectory.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+         of type String
+        </li>
+        <li><span class="parameter">destinationPath</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "Type"></a>
+    <strong>Type (o)</strong>
+    </dt>
+    <dd>
+    Type.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type Object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "IsRelativeVar"></a>
+    <strong>IsRelativeVar (target, o)</strong>
+    </dt>
+    <dd>
+    IsRelativeVar.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">target</span>
+         of type GameObject
+        </li>
+        <li><span class="parameter">o</span>
+         of type Object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "IsRelativeType"></a>
+    <strong>IsRelativeType (o)</strong>
+    </dt>
+    <dd>
+    IsRelativeType.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type Object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "IsComponentType"></a>
+    <strong>IsComponentType (o)</strong>
+    </dt>
+    <dd>
+    IsComponentType.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type Object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "IsGameObjectType"></a>
+    <strong>IsGameObjectType (o)</strong>
+    </dt>
+    <dd>
+    IsGameObjectType.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type Object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Boolean
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "CastVar"></a>
+    <strong>CastVar (o, target)</strong>
+    </dt>
+    <dd>
+    CastVar.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">o</span>
+         of type Object
+        </li>
+        <li><span class="parameter">target</span>
+         of type Object
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Object
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetIcon"></a>
+    <strong>GetIcon (p)</strong>
+    </dt>
+    <dd>
+    GetIcon.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Sprite
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "LoadAllIcons"></a>
+    <strong>LoadAllIcons ()</strong>
+    </dt>
+    <dd>
+    LoadAllIcons.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "UnLoadAllIcons"></a>
+    <strong>UnLoadAllIcons ()</strong>
+    </dt>
+    <dd>
+    UnLoadAllIcons.
+
+
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetLanguage"></a>
+    <strong>GetLanguage ()</strong>
+    </dt>
+    <dd>
+    GetLanguage.
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "SetLanguage"></a>
+    <strong>SetLanguage (l)</strong>
+    </dt>
+    <dd>
+    SetLanguage.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">l</span>
+         of type String
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetInfoInLanguage"></a>
+    <strong>GetInfoInLanguage (p, l)</strong>
+    </dt>
+    <dd>
+    GetInfoInLanguage.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         of type String
+        </li>
+        <li><span class="parameter">l</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetKeywordInLanguage"></a>
+    <strong>GetKeywordInLanguage (k, l)</strong>
+    </dt>
+    <dd>
+    GetKeywordInLanguage.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">k</span>
+         of type String
+        </li>
+        <li><span class="parameter">l</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetCopyName"></a>
+    <strong>GetCopyName (s)</strong>
+    </dt>
+    <dd>
+    GetCopyName.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ToUppercase"></a>
+    <strong>ToUppercase (s)</strong>
+    </dt>
+    <dd>
+    ToUppercase.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ToLowercase"></a>
+    <strong>ToLowercase (s)</strong>
+    </dt>
+    <dd>
+    ToLowercase.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ToUppercaseFirst"></a>
+    <strong>ToUppercaseFirst (s)</strong>
+    </dt>
+    <dd>
+    ToUppercaseFirst.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">s</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ToUppercaseWords"></a>
+    <strong>ToUppercaseWords (value)</strong>
+    </dt>
+    <dd>
+    ToUppercaseWords.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">value</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        String
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetColorFromLinkType"></a>
+    <strong>GetColorFromLinkType (linktype)</strong>
+    </dt>
+    <dd>
+    GetColorFromLinkType.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">linktype</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Color
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetMaterial"></a>
+    <strong>GetMaterial (nam)</strong>
+    </dt>
+    <dd>
+    GetMaterial.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">nam</span>
+         of type String
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Material
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetMaterialReversedToggle"></a>
+    <strong>GetMaterialReversedToggle (mat)</strong>
+    </dt>
+    <dd>
+    GetMaterialReversedToggle.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mat</span>
+         of type Material
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Material
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetMaterialReverse"></a>
+    <strong>GetMaterialReverse (mat)</strong>
+    </dt>
+    <dd>
+    GetMaterialReverse.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mat</span>
+         of type Material
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Material
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetMaterialNormal"></a>
+    <strong>GetMaterialNormal (mat)</strong>
+    </dt>
+    <dd>
+    GetMaterialNormal.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mat</span>
+         of type Material
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Material
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "GetMaterialCulling"></a>
+    <strong>GetMaterialCulling (mat)</strong>
+    </dt>
+    <dd>
+    GetMaterialCulling.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">mat</span>
+         of type Material
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+        Int32
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-08-15 21:38:59 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
