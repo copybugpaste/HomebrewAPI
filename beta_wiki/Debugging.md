@@ -6,8 +6,7 @@ This is a tough one, since the lua you're making is very Homebrew specific (in m
 
 Thankfully, we supply everyone with a Console (´´home key`` to toggle it on/off), which will log each Debug message you put in.
 
-![console screenshot](http://i.imgur.com/gy4DR5t.png)
-
+![new_console](http://i.imgur.com/VzOyAnT.png)
 It's fairly easy to send specific kind of logs using the default Unity "Debug" class
 
 ```lua
@@ -18,7 +17,7 @@ Debug.LogError("This is an error")
 
 this will result in these messages in your console.
 
-![chat_example](http://i.imgur.com/lBQmjAy.png)
+![chat_example](http://i.imgur.com/e6JNOoF.png)
 
 this might not be the _handiest_ way for debugging though, as it requires you to be outside of a vehicle to toggle on/off.
 
@@ -69,6 +68,55 @@ self.error    = function(msg) self.chat:AddMessage("<color=#cc0000>[DEBUG]</colo
 which will result in the name being red
 
 ![red_error_log](http://i.imgur.com/fBupvJ4.png)
+
+## Seperate Console window
+Alternatively, you can also open up a custom instance of the Console we supply, and only place debug messages of your own design in there.
+This is a bit more complex, but not too hard to figure out.
+
+First we'll need to make a new Console, this is fairly straightforward
+
+```lua
+  self.console = HBConsoleManager.Create(Application.streamingAssetsPath .. "/HBConsole.exe", "Custom console yo!", 2000)
+```
+
+the ``HBConsoleManager.Create`` function takes a couple of argument, not _all_ are needed though.
+
+``HBConsole.Create(string exePath, string consoleTitle = "Homebrew Console", int port = 1989, int consoleWidth = 255, int bufferSize = 1024, string prefix = ">>")``
+
+The ones that definately need to change, is the port. We also specify a custom title, so it's a bit easier to differentiate between our own console, and the one embeded in Homebrew.
+
+Next you'll need to hook up the events, and the destruction of your console.
+
+```lua
+function con:Start()
+  self.console = HBConsoleManager.Create(Application.streamingAssetsPath .. "/HBConsole.exe", "Custom console", 2000)
+  self.console.OnRead = self.onConsoleRead
+  self.console.OnConnect = self.onConsoleConnect
+  self.console:OpenConsole()
+end
+self.onConsoleRead = function(s)
+  self.console:WriteLine("you wrote " .. s .. " in the console.")
+end
+
+self.onConsoleConnect = function()
+  self.console:WriteLine("Your Console connected succesfully!")
+end
+
+function con:OnDestroy()
+  self.console:KillConsole()
+end
+```
+
+As you can see, we hook up ``console.OnRead`` and ``console.OnConnect``, OnRead gets called when the user inputs anything in the console, and presses enter. OnConnect gets called when the console has started succesfully.
+
+Then we call ``console:OpenConsole()`` to open up the console, and we can log what-ever we want in there using ``console:WriteLine(message)``, the console also accepts color input (using html tags, like so ``<color=#FF0000>this is red</color>``), so you can slightly modify the functions we made for the getting the chat colors working, for our custom console.
+![custom console funcs](http://i.imgur.com/i7kvneu.png)
+
+```lua
+self.log      = function(msg) self.console:WriteLine(string.format("<color=#ffffff>[DEBUG]</color> %s", msg)) end
+self.error    = function(msg) self.console:WriteLine(string.format("<color=#ff0000>[DEBUG]</color> %s", msg)) end
+self.warning  = function(msg) self.console:WriteLine(string.format("<color=#FFD700>[DEBUG]</color> %s", msg)) end
+```
 
 I think that's enough for now about regular text debugging.
 
