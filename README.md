@@ -1,5 +1,5 @@
 # Foreword
 
-This documentation is a huge work in progress, and we'll be updating this farely often.
+This documentation is still a huge work in progress, and will be updated.
 
 View [WIKI](../../wiki)
