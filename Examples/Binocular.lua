@@ -37,12 +37,9 @@ function Binocular:Awake()
   self.lastScrollTime = 0.0
 
   self.superSize = 1 --set this higher for _ultra highres_ screenshots!
-  self:GetPP()
   self.takingPicture = false
 
-end
-function Binocular:GetPP()
-  self.pp = Camera.main:GetComponent("PostProcessingBehaviour")
+  self.ppl =  Camera.main.gameObject:GetComponent("UnityEngine.Rendering.PostProcessing.PostProcessLayer")
 end
 function Binocular:OnDestroy()
   --destroy ui
@@ -75,22 +72,21 @@ function Binocular:Update()
     if(self.useGadgetKey:GetKeyDown())then
       self.takingPicture = true
       --Take screenshot
-      local aa_enabled = self.pp.profile.antialiasing.enabled
-      self.pp.profile.antialiasing.enabled = false
       self.canvasGroup.alpha = 0
       local mm = GameObject.Find("MainMenu")
       mm:SetActive(false)
       local time = os.date("%x_%X")
       local filename = string.gsub(string.gsub(time,"/","_"),":","_")
       local path = Application.persistentDataPath .. "/screenshots/" .. filename .. ".png"
-
+      self.aaState = self.ppl.antialiasingMode
+      self.ppl.antialiasingMode=0
       HBU.TakeScreenshot(
         path,
         function()
-          self.pp.profile.antialiasing.enabled = aa_enabled
           mm:SetActive(true)
           self.canvasGroup.alpha = 1
           self.takingPicture = false
+          self.ppl.antialiasingMode = self.aaState
         end,
         self.superSize
       )
