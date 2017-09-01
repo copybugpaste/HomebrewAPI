@@ -1,6 +1,10 @@
 --- OnApplicationQuit.
 function HBU.OnApplicationQuit() end
 
+--- OnDamageSent
+-- @param damage of type Float
+-- @param point of type Vector3
+HBU.OnDamageSent = function(dmg, point)
 --- GetSetting.
 -- @param setting of type String
 -- @return Single
